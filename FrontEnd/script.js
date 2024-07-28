@@ -1,7 +1,7 @@
-/*Variable or storing fetched data, not for referencing DOM elements. 
-It is used to keep the project data that will be dynamically added to the DOM*/
-let imageWorks;
-let categories = []
+/*Variable*/
+
+let imageWorks; // The variable will be assigned a value later, such as after fetching data from an API.
+let categories = [] // This variable is ready to be used as an array from the moment it is declared.
 
 
 ///////////// Variables ///////////////
@@ -71,15 +71,28 @@ function displayFilters(){
     button.classList.add("filterButton");
 
     button.textContent ="Tous";
+    button.addEventListener("click", () => triageWorks("Tous"));
     filterDiv.appendChild(button);
 
   categories.forEach(category => {
     const categoryButton = document.createElement ("button");
     categoryButton.classList.add("filterButton");
+    
     categoryButton.textContent = category.name;
+    categoryButton.addEventListener("click", () => triageWorks(category.name));
     filterDiv.appendChild(categoryButton);
     });
 
     projectSection.appendChild(filterDiv);
 }
 
+/////////////// Function to filter buttons //////////////////
+
+function triageWorks(category){
+    if (category === "Tous") {
+        displayWorks(imageWorks); // Show all works if "Tous" is selected
+    } else {
+        const filteredWorks = imageWorks.filter(work => work.category.name === category);
+        displayWorks(filteredWorks);
+    }
+}
