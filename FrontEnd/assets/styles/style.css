@@ -52,7 +52,9 @@ body {
 	margin:auto;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
+	background-color: #fffef8;
 }
+
 header {
 	display: flex;
 	justify-content: space-between;
@@ -197,7 +199,8 @@ input[type="submit"]{
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
-	margin: 2em
+	margin: 2em;
+	background-color: white;
 }
 
 /* Button Filters style */
