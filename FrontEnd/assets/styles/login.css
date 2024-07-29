@@ -22,6 +22,7 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
@@ -93,11 +94,19 @@ nav ul {
 nav li {
 	padding: 0 10px;
 	font-size: 1.2em;
+    font-family: "Work Sans";
 }
 
-li:hover {
-	color: #B1663C;
+.nav-menu li:hover {
+    color: initial;
+    font-weight: bold;
+    font-family:"Work Sans";
 }
+
+li:hover{
+    color: black;
+}
+
 #introduction {
 	display: flex;
 	align-items: center;
