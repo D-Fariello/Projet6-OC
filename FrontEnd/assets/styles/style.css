@@ -84,6 +84,12 @@ h2{
 	font-size: 30px;
 	color: #1D6154
 }
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
 nav ul {
 	display: flex;
 	align-items: center;
@@ -97,7 +103,7 @@ nav li {
 }
 
 .nav-menu li:hover {
-    color: initial;
+    color: black;
     font-weight: bold;
     font-family:"Work Sans";
 }
