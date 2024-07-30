@@ -32,11 +32,13 @@
     <main>
         <section id="log-in">
             <h2>Log In</h2>
-            <form action="#" method="post">
+            <form action="#" method="post" id="form">
                 <label for="email">E-mail</label>
                 <input type="email" name="email" id="email">
+                <div class="login-error"></div>
                 <label for="password">Mot de passe</label>
                 <input type="password" name="password" id="password">
+                <div class="password-error"></div>
                 <input type="submit" value="Se connecter">
             </form>
         </section>
