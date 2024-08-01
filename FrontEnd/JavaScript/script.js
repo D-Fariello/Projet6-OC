@@ -1,3 +1,5 @@
+import {removeFilters} from './login.js';
+
 /*Variable*/
 
 let imageWorks; // The variable will be assigned a value later, such as after fetching data from an API.
@@ -84,6 +86,9 @@ function displayFilters() {
     });
 
     projectSection.appendChild(filterDiv);
+
+    // Calling RemoveFilters after filterDiv is added to the DOM
+    removeFilters()
 }
 
 /////////////// Function to filter buttons //////////////////
@@ -97,3 +102,11 @@ function triageWorks(category) {
     }
 }
 
+
+// Use the imported functions
+function setupPage() {
+    removeFilters();
+}
+
+// Call the function to set up the page
+setupPage();

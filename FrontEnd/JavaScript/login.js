@@ -35,10 +35,6 @@ async function eventListenerLogin() {
     }
     );
 }
-///////// Calling the Event Listener Function //////////
-
-eventListenerLogin();
-
 
 ///////// LoggedIn Function ////////////
 
@@ -57,23 +53,21 @@ function isLoggedIn() {
             }
         }
     }
+
+    modifierButton(); // Adjust button visibility based on token
+    removeFilters(); // Adjust filter visibility based on token
 }
 
-/////////// Handle logout action/////////// 
+///////////// Handle logout action /////////// 
 
 function handleLogout() {
     localStorage.removeItem("token");
     window.location.reload(); // Reload the page to reflect changes
 }
 
-/////// Calling the functions ///////////
-
-eventListenerLogin();
-isLoggedIn();
-
 /////////// Adding the modifier button ////////
 
-function modifierButton(){
+function modifierButton() {
     const token = localStorage.getItem("token"); // retrieves the token from local storage
     const modifyBtn = document.getElementById("modify-btn");
     if (token) {
@@ -83,4 +77,23 @@ function modifierButton(){
     }
 }
 
-modifierButton()
+
+/////////// Remove Filters //////////////
+
+export function removeFilters() {
+    const filterDiv = document.querySelector(".filterDiv");
+    const token = localStorage.getItem("token");
+
+    if (filterDiv) {
+        if (token) {
+            filterDiv.style.display = "none";
+        } else {
+            filterDiv.style.display = "flex";
+        }
+    }
+}
+
+/////// Calling the functions ///////////
+eventListenerLogin();
+isLoggedIn();
+

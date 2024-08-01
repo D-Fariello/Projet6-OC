@@ -109,6 +109,7 @@ nav li {
     color: black;
     font-weight: bold;
     font-family:"Work Sans";
+	cursor: pointer;
 }
 
 li:hover{
@@ -244,4 +245,5 @@ footer nav ul {
     font-family: 'Work Sans';
 	font-size: 16px;
 	gap: 10px;
+	cursor: pointer;
 }
