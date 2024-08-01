@@ -70,3 +70,17 @@ function handleLogout() {
 
 eventListenerLogin();
 isLoggedIn();
+
+/////////// Adding the modifier button ////////
+
+function modifierButton(){
+    const token = localStorage.getItem("token"); // retrieves the token from local storage
+    const modifyBtn = document.getElementById("modify-btn");
+    if (token) {
+        modifyBtn.style.display = "inline-flex";
+    } else {
+        modifyBtn.style.display = "none";
+    }
+}
+
+modifierButton()
