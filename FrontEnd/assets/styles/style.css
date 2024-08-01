@@ -215,6 +215,7 @@ footer nav ul {
     display: flex; 
 	justify-content: center;
     gap: 10px;
+	margin-bottom: -45px;
 }
 
 .filterButton {
