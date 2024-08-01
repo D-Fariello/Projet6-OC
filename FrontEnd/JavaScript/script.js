@@ -12,8 +12,8 @@ const gallery = document.querySelector(".gallery");
 
 //////////// Function Fecth to get "Works" from API: ////////////
 
-async function worksApiCall(){
-    const response = await fetch ("http://localhost:5678/api/works");
+async function worksApiCall() {
+    const response = await fetch("http://localhost:5678/api/works");
     const works = await response.json();
     console.log("Fecthed Works", works);
     imageWorks = works;
@@ -26,9 +26,9 @@ worksApiCall();
 
 //////////// Function to display Works //////////////
 
-function displayWorks(items = imageWorks){ // adding these parameters so when displayWorks() is called it will automatically use imageWorks
+function displayWorks(items = imageWorks) { // adding these parameters so when displayWorks() is called it will automatically use imageWorks
     if (!items) // If Items do not have anything, ensure there is data to display
-    return;
+        return;
 
     gallery.innerHTML = ""; // Clear extisting content
 
@@ -50,37 +50,37 @@ function displayWorks(items = imageWorks){ // adding these parameters so when di
 
 //////////// Function Fecth to get "Categories" from API: ////////////
 
-async function categoriesApiCall(){
-    const categoryRespose = await fetch ("http://localhost:5678/api/categories");
-     
+async function categoriesApiCall() {
+    const categoryRespose = await fetch("http://localhost:5678/api/categories");
+
     categories = await categoryRespose.json();
     console.log("Fetched Categories", categories);
     displayFilters();
 }
 
 ////////////// Calling the function ////////////////
-categoriesApiCall ();
+categoriesApiCall();
 
 /////////////// Function to create filters //////////////////
 
-function displayFilters(){
+function displayFilters() {
     const filterDiv = document.createElement("div");
     filterDiv.classList.add("filterDiv");
 
-    const button = document.createElement ("button");
+    const button = document.createElement("button");
     button.classList.add("filterButton");
 
-    button.textContent ="Tous";
+    button.textContent = "Tous";
     button.addEventListener("click", () => triageWorks("Tous"));
     filterDiv.appendChild(button);
 
-  categories.forEach(category => {
-    const categoryButton = document.createElement ("button");
-    categoryButton.classList.add("filterButton");
-    
-    categoryButton.textContent = category.name;
-    categoryButton.addEventListener("click", () => triageWorks(category.name));
-    filterDiv.appendChild(categoryButton);
+    categories.forEach(category => {
+        const categoryButton = document.createElement("button");
+        categoryButton.classList.add("filterButton");
+
+        categoryButton.textContent = category.name;
+        categoryButton.addEventListener("click", () => triageWorks(category.name));
+        filterDiv.appendChild(categoryButton);
     });
 
     projectSection.appendChild(filterDiv);
@@ -88,7 +88,7 @@ function displayFilters(){
 
 /////////////// Function to filter buttons //////////////////
 
-function triageWorks(category){
+function triageWorks(category) {
     if (category === "Tous") {
         displayWorks(imageWorks); // Show all works if "Tous" is selected
     } else {

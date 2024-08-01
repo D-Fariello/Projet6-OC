@@ -47,6 +47,7 @@ table {
 	border-spacing: 0;
 }
 /** end reset css**/
+
 body {
 	max-width: 1140px;
 	margin:auto;
@@ -199,8 +200,11 @@ input[type="submit"]{
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
-	margin: 2em;
+	margin: 0;
+	padding: 20px;
 	background-color: white;
+	margin-left: -10%;
+    margin-right: -10%;
 }
 
 /* Button Filters style */
