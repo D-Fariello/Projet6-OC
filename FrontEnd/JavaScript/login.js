@@ -97,3 +97,13 @@ export function removeFilters() {
 eventListenerLogin();
 isLoggedIn();
 
+
+
+////////// Open modal //////////
+
+// function openModal() {
+//     const overlay = document.querySelector(".overlay").style.display="block";
+//     const modifyBtn = document.getElementById("modify-btn").classList.add("modal-open");
+// }
+
+// openModal();

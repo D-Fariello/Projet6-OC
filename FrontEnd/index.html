@@ -16,7 +16,7 @@
 	<link rel="stylesheet" href="./assets/styles/style.css">
 	<link rel="stylesheet" href="./assets/styles/login.css">
 	<script src="./JavaScript/script.js" type="module" defer></script>
-	<script src="./JavaScript/login.js" type="module"  defer></script>
+	<script src="./JavaScript/login.js" type="module" defer></script>
 </head>
 
 <body>
@@ -25,7 +25,7 @@
 		<nav class="nav-menu">
 			<ul>
 				<li><a href="#portfolio">projets</a></li>
-            	<li><a href="#contact">contact</a></li>
+				<li><a href="#contact">contact</a></li>
 				<li class="login-logout"><a href="login.html" target="_blank">login</a></li>
 				<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 			</ul>
@@ -48,7 +48,19 @@
 			</article>
 		</section>
 		<section id="portfolio">
-			<h2 class="projectSection">Mes Projets <button id= "modify-btn"> <i class="fa-regular fa-pen-to-square"></i> modifier </i> </button></h2>
+			<h2 class="projectSection">Mes Projets <button id="modify-btn"><i class="fa-regular fa-pen-to-square"></i>
+					modifier </i></button></h2>
+
+			<div class="overlay"></div>
+
+			<div class="modal">
+				<div class="modal-header">
+					<div class="close-btn"><i class="fa-solid fa-xmark"></i></div>
+					<h2> Galerie photo </h2>
+					<input class="addpics-btn" type="submit" value="Ajouter une photo">
+				</div>
+
+			</div>
 			<div class="gallery"> </div>
 		</section>
 		<section id="contact">
