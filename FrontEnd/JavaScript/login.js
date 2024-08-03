@@ -99,11 +99,34 @@ isLoggedIn();
 
 
 
-////////// Open modal //////////
+///////////////// Open modal //////////////
 
-// function openModal() {
-//     const overlay = document.querySelector(".overlay").style.display="block";
-//     const modifyBtn = document.getElementById("modify-btn").classList.add("modal-open");
-// }
 
-// openModal();
+function openModal(){
+    const overlay = document.querySelector(".overlay");
+    const modal = document.querySelector(".modal");
+
+    overlay.style.display= "block";
+    modal.style.display= "block";
+    modal.classList.add("open-modal");
+}
+
+    const modifyBtn = document.getElementById("modify-btn");
+    modifyBtn.addEventListener('click', openModal);
+
+
+
+//////////////// Close Modal /////////////////
+
+
+function closeModal(){
+    const overlay = document.querySelector(".overlay");
+    const modal = document.querySelector(".modal");
+
+    overlay.style.display= "none";
+    modal.style.display= "none";
+    modal.classList.remove("open-modal");
+}
+
+    const closeBtn = document.querySelector(".close-btn");
+    closeBtn.addEventListener('click', closeModal);
