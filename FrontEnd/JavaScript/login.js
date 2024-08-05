@@ -2,11 +2,10 @@ const email = document.getElementById("email");
 const password = document.getElementById("password");
 const form = document.getElementById("form");
 const loginError = document.querySelector(".login-error");
-const passwordError = document.querySelector(".password-error");
 
 /////// LogIn + Error message //////
 
-async function eventListenerLogin() {
+export async function eventListenerLogin() {
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
@@ -38,7 +37,7 @@ async function eventListenerLogin() {
 
 ///////// LoggedIn Function ////////////
 
-function isLoggedIn() {
+export function isLoggedIn() {
     const token = localStorage.getItem("token"); // retrieves the token from local storage
     if (token) { //checks if the token exists
         const loginLogout = document.querySelector(".login-logout");
@@ -60,14 +59,14 @@ function isLoggedIn() {
 
 ///////////// Handle logout action /////////// 
 
-function handleLogout() {
+export function handleLogout() {
     localStorage.removeItem("token");
     window.location.reload(); // Reload the page to reflect changes
 }
 
 /////////// Adding the modifier button ////////
 
-function modifierButton() {
+export function modifierButton() {
     const token = localStorage.getItem("token"); // retrieves the token from local storage
     const modifyBtn = document.getElementById("modify-btn");
     const modifyMode = document.querySelector(".modify-mode");
@@ -101,35 +100,3 @@ eventListenerLogin();
 isLoggedIn();
 
 
-
-///////////////// Open modal //////////////
-
-
-function openModal(){
-    const overlay = document.querySelector(".overlay");
-    const modal = document.querySelector(".modal");
-
-    overlay.style.display= "block";
-    modal.style.display= "block";
-    modal.classList.add("open-modal");
-}
-
-    const modifyBtn = document.getElementById("modify-btn");
-    modifyBtn.addEventListener('click', openModal);
-
-
-
-//////////////// Close Modal /////////////////
-
-
-function closeModal(){
-    const overlay = document.querySelector(".overlay");
-    const modal = document.querySelector(".modal");
-
-    overlay.style.display= "none";
-    modal.style.display= "none";
-    modal.classList.remove("open-modal");
-}
-
-    const closeBtn = document.querySelector(".close-btn");
-    closeBtn.addEventListener('click', closeModal);

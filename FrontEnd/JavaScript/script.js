@@ -2,7 +2,7 @@ import {removeFilters} from './login.js';
 
 /*Variable*/
 
-let imageWorks; // The variable will be assigned a value later, such as after fetching data from an API.
+export let imageWorks; // The variable will be assigned a value later, such as after fetching data from an API.
 let categories = [] // This variable is ready to be used as an array from the moment it is declared.
 
 
@@ -14,7 +14,7 @@ const gallery = document.querySelector(".gallery");
 
 //////////// Function Fecth to get "Works" from API: ////////////
 
-async function worksApiCall() {
+export async function worksApiCall() {
     const response = await fetch("http://localhost:5678/api/works");
     const works = await response.json();
     console.log("Fecthed Works", works);
@@ -28,7 +28,7 @@ worksApiCall();
 
 //////////// Function to display Works //////////////
 
-function displayWorks(items = imageWorks) { // adding these parameters so when displayWorks() is called it will automatically use imageWorks
+export function displayWorks(items = imageWorks) { // adding these parameters so when displayWorks() is called it will automatically use imageWorks
     if (!items) // If Items do not have anything, ensure there is data to display
         return;
 
