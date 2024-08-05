@@ -70,10 +70,13 @@ function handleLogout() {
 function modifierButton() {
     const token = localStorage.getItem("token"); // retrieves the token from local storage
     const modifyBtn = document.getElementById("modify-btn");
+    const modifyMode = document.querySelector(".modify-mode");
     if (token) {
         modifyBtn.style.display = "inline-flex";
+        modifyMode.style.display = "flex";
     } else {
         modifyBtn.style.display = "none";
+        modifyMode.style.display = "none";
     }
 }
 

@@ -7,6 +7,20 @@ main {
 	padding-bottom: 90px;
 }
 
+.modify-mode {
+    position: fixed;
+	width: 100%;
+    top: 10px;
+    left: 50%;
+    transform: translate(-50%, -30%);
+    background-color: black;
+    padding: 15px;
+    align-items: center;
+    gap: 5px;
+    color: white;
+	justify-content: center;
+}
+
 
 nav ul {
 	display: flex;
