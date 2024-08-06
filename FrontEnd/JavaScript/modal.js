@@ -39,7 +39,9 @@ function closeModal(){
 
 // Event listener for closing the modal
     const closeBtn = document.querySelector(".close-btn");
+    const overlay = document.querySelector(".overlay");
     closeBtn.addEventListener('click', closeModal);
+    overlay.addEventListener('click', closeModal);
 
 
 
