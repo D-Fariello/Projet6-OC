@@ -249,3 +249,93 @@ footer nav ul {
 	gap: 10px;
 	cursor: pointer;
 }
+
+
+/* Modale Page */ 
+
+.overlay {
+	position: fixed;
+	top: 0;
+	left:0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.20);
+	display: none;
+}
+
+.modal {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -40%);
+	width: 600px;
+	height: 600px;
+	background-color: #fffef8;
+	border-radius: 2%;
+	padding: 30px 30px 50px 30px;
+	display: none;
+}
+
+.modal-open {
+	display: block;
+}
+
+.close-btn {
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	cursor: pointer;
+}
+
+.modal-header h2 {
+	color: black;
+	font-family: "Work Sans";
+	font-weight: 400;
+}
+
+input[type="submit"].add-pictures-btn {
+	display: flex;
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: #1D6154;
+	width: 215px;
+	text-align: center;
+	border-radius: 60px ;
+	cursor: pointer;
+    padding: 11px 20px 11px 20px;
+    border: none;
+}
+
+
+.gallery-selection {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-left: 15%;
+    padding-right: 10%;
+}
+
+.img-selection {
+    position: relative;
+    display: block;
+    height: 100px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.figure-img {
+    position: relative;
+}
+
+i.fa-regular.fa-trash-can {
+    background-color: black;
+    color: white;
+    padding: 4px;
+    font-size: 12px;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    position: absolute;
+} 
