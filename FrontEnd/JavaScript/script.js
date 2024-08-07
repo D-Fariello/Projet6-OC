@@ -1,5 +1,3 @@
-import {removeFilters} from './login.js';
-
 /*Variable*/
 
 let imageWorks; // The variable will be assigned a value later, such as after fetching data from an API.
@@ -29,7 +27,7 @@ worksApiCall();
 
 //////////// Function to display Works //////////////
 
-export function displayWorks(items = imageWorks) { // adding these parameters so when displayWorks() is called it will automatically use imageWorks
+function displayWorks(items = imageWorks) { // adding these parameters so when displayWorks() is called it will automatically use imageWorks
     if (!items) // If Items do not have anything, ensure there is data to display
         return;
 
@@ -64,7 +62,7 @@ async function categoriesApiCall() {
 ////////////// Calling the function ////////////////
 categoriesApiCall();
 
-/////////////// Function to create filters //////////////////
+/////////// Function to create filters ///////////////
 
 function displayFilters() {
     const filterDiv = document.createElement("div");
@@ -92,7 +90,22 @@ function displayFilters() {
     removeFilters()
 }
 
-/////////////// Function to filter buttons //////////////////
+///////// Remove Filters ////////////
+
+function removeFilters() {
+    const filterDiv = document.querySelector(".filterDiv");
+    const token = localStorage.getItem("token");
+
+    if (filterDiv) {
+        if (token) {
+            filterDiv.style.display = "none";
+        } else {
+            filterDiv.style.display = "flex";
+        }
+    }
+}
+
+/////////// Function to filter buttons ///////////
 
 function triageWorks(category) {
     if (category === "Tous") {
@@ -104,17 +117,8 @@ function triageWorks(category) {
 }
 
 
-// Use the imported functions
-function setupPage() {
-    removeFilters();
-}
 
-// Call the function to set up the page
-setupPage();
-
-
-
-////////////////////////////// Modal ///////////////////////////////////////////
+/////////////////////////////////////// Modal //////////////////////////////////////////////
 
 
 ///////////// Variables //////////////
@@ -192,7 +196,6 @@ function photoSelection(items = imageWorks) { // adding these parameters so when
 
 }
 
-
 //////////////// Delete Work /////////////////
 
 async function removeWork(e) {
@@ -200,8 +203,6 @@ async function removeWork(e) {
     const figure = trashIcon.closest('figure');
     const id = trashIcon.dataset.id;
     const token = localStorage.getItem("token");
-
-    // figure.remove();
 
     try {
         const response = await fetch(`http://localhost:5678/api/works/${id}`, {

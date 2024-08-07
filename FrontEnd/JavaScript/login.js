@@ -5,14 +5,9 @@ const loginError = document.querySelector(".login-error");
 
 /////// LogIn + Error message //////
 
-export async function eventListenerLogin() {
+async function eventListenerLogin() {
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
-
-        // let messages = [];
-        // if (messages.length > 0) {
-        //     e.preventDefault();
-        // } else {
         try {
             const response = await fetch("http://localhost:5678/api/users/login", {
                 method: "POST",
@@ -37,7 +32,7 @@ export async function eventListenerLogin() {
 
 ///////// LoggedIn Function ////////////
 
-export function isLoggedIn() {
+function isLoggedIn() {
     const token = localStorage.getItem("token"); // retrieves the token from local storage
     if (token) { //checks if the token exists
         const loginLogout = document.querySelector(".login-logout");
@@ -54,19 +49,18 @@ export function isLoggedIn() {
     }
 
     modifierButton(); // Adjust button visibility based on token
-    removeFilters(); // Adjust filter visibility based on token
 }
 
 ///////////// Handle logout action /////////// 
 
-export function handleLogout() {
+function handleLogout() {
     localStorage.removeItem("token");
     window.location.reload(); // Reload the page to reflect changes
 }
 
 /////////// Adding the modifier button ////////
 
-export function modifierButton() {
+function modifierButton() {
     const token = localStorage.getItem("token"); // retrieves the token from local storage
     const modifyBtn = document.getElementById("modify-btn");
     const modifyMode = document.querySelector(".modify-mode");
@@ -79,24 +73,6 @@ export function modifierButton() {
     }
 }
 
-
-/////////// Remove Filters //////////////
-
-export function removeFilters() {
-    const filterDiv = document.querySelector(".filterDiv");
-    const token = localStorage.getItem("token");
-
-    if (filterDiv) {
-        if (token) {
-            filterDiv.style.display = "none";
-        } else {
-            filterDiv.style.display = "flex";
-        }
-    }
-}
-
 /////// Calling the functions ///////////
 eventListenerLogin();
 isLoggedIn();
-
-
