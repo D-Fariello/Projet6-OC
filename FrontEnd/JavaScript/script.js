@@ -236,28 +236,39 @@ async function removeWork(e) {
 const addPhoto = document.querySelector(".add-photo");
 const picsSelection = document.querySelector(".pics-selection");
 const addPicsBtn = document.querySelector(".add-pictures-btn");
-const closeBtnpics = document.querySelector(".close-btn");
+const closingButton = document.querySelector(".close-button");
 const overlayAddPics = document.querySelector(".overlay");
 const addPhotoBtn = document.querySelector(".add-photo-btn");
+const arrowLeft = document.querySelector(".arrow-left");
 
 ///////////////// Open  Add Photo Page //////////////
 function openAddPhotoPage() {
     overlayAddPics.style.display = "block";
+    modal.style.display = "none";
     addPhoto.style.display = "block";
 }
 
-// Event listener for opening the modal
+// Event listener for opening the Add Photo Page 
 addPicsBtn.addEventListener('click', openAddPhotoPage);
 
+arrowLeft.addEventListener('click', function() {
+    closeAddPhotoPage();
+    openModal();
+});
 
-//////////////// Close Modal /////////////////
+//////////////// Close Add Photo Page  /////////////////
 function closeAddPhotoPage() {
     overlayAddPics.style.display = "none";
     addPhoto.style.display = "none";
 }
 
-// Event listener for closing the modal
-closeBtnpics.addEventListener('click', closeAddPhotoPage);
+closingButton.addEventListener('click', function() {
+    closeAddPhotoPage();
+    closeModal();
+});
+
+
+// Event listener for closing the Add Photo Page 
 overlayAddPics.addEventListener('click', closeAddPhotoPage);
 
 

@@ -386,11 +386,8 @@ i.fa-regular.fa-trash-can {
 }
 
 .arrow-left {
-	display: flex;
 	position: relative;
-	z-index: 2;
 	align-content: center;
-	align-items: center;
 	font-size: 22px;
 	text-decoration: none;
 	color: black;
