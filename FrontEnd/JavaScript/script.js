@@ -226,3 +226,45 @@ async function removeWork(e) {
     }
 }
 
+
+
+/////////////////////////////////////// Add Photo Page //////////////////////////////////////////////
+
+
+///////////// Variables //////////////
+
+const addPhoto = document.querySelector(".add-photo");
+const picsSelection = document.querySelector(".pics-selection");
+const addPicsBtn = document.querySelector(".add-pictures-btn");
+const closeBtnpics = document.querySelector(".close-btn");
+const overlayAddPics = document.querySelector(".overlay");
+const addPhotoBtn = document.querySelector(".add-photo-btn");
+
+///////////////// Open  Add Photo Page //////////////
+function openAddPhotoPage() {
+    overlayAddPics.style.display = "block";
+    addPhoto.style.display = "block";
+}
+
+// Event listener for opening the modal
+addPicsBtn.addEventListener('click', openAddPhotoPage);
+
+
+//////////////// Close Modal /////////////////
+function closeAddPhotoPage() {
+    overlayAddPics.style.display = "none";
+    addPhoto.style.display = "none";
+}
+
+// Event listener for closing the modal
+closeBtnpics.addEventListener('click', closeAddPhotoPage);
+overlayAddPics.addEventListener('click', closeAddPhotoPage);
+
+
+////////////// Add Photo Button Click ////////////
+addPhotoBtn.addEventListener('click', function() {
+    // Perform any additional actions for adding a photo here
+
+    // Close the modal after adding the photo
+    closeAddPhotoPage();
+});
