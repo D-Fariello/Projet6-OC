@@ -310,7 +310,6 @@ input[type="submit"].add-pictures-btn {
 	cursor: pointer;
     padding: 11px 20px 11px 20px;
     border: none;
-	margin-top: 20%;
 }
 
 
@@ -319,11 +318,18 @@ input[type="submit"].add-pictures-btn {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 10px;
-    padding-left: 15%;
     padding-right: 10%;
 	padding-bottom: 35px;
 	border-bottom: 1px grey solid;
 }
+
+.gallery-photo-selection{
+	width: 80%;
+    display: flex;
+    flex-direction: column;
+    margin: 10%;
+}
+
 
 .img-selection {
     position: relative;
@@ -409,6 +415,44 @@ i.fa-regular.fa-trash-can {
 	font-weight: 400;
 }
 
+.pics-selection {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    margin: 10%;
+}
+
+.photo-upload-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #e8f1f6;
+    height: 200px;
+    margin-top: -55px;
+}
+
+i.fa-regular.fa-image {
+    color:#b9c5cc;
+	font-size: 70px;
+}
+
+button.photo-upload-btn {
+    font-weight: 700;
+    color: #356988;
+    background-color: #cbd6dc;
+    margin: 2em auto;
+    width: 180px;
+    text-align: center;
+    border-radius: 60px;
+    border: none;
+    padding: 11px 20px 11px 20px;
+}
+
+p.photo-note {
+    color: #85898b;
+}
+
 input#title {
 	height: 50px;
     font-size: 1.2em;
@@ -426,8 +470,8 @@ select#category {
 	margin-top: 5px;
 }
 
-input.add-photo-btn {
-    background-color: grey;
+input[type="submit"].add-photo-btn {
+    background-color: #a7a7a7;
 	width: 230px;
 }
 

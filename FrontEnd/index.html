@@ -58,8 +58,10 @@
 				<div class="modal-header">
 					<div class="close-btn"><i class="fa-solid fa-xmark"></i></div>
 					<h2> Galerie photo </h2>
-					<div class="gallery-selection"></div>
-					<input class="add-pictures-btn" type="submit" value="Ajouter une photo">
+					<div class="gallery-photo-selection">
+						<div class="gallery-selection"></div>
+						<input class="add-pictures-btn" type="submit" value="Ajouter une photo">
+					</div>
 				</div>
 			</div>
 			<div class="add-photo">
@@ -67,16 +69,25 @@
 					<div class="close-btn close-button"><i class="fa-solid fa-xmark"></i>
 					</div>
 					<a class="arrow-left" href="#" target="_self"><i class="fa-solid fa-arrow-left"></i></a>
-					
+
 					<h2> Ajout photo </h2>
-					<div class="pics-selection"></div>
-					<form action="#" method="post">
-						<label for="title">Titre</label>
-						<input type="text" name="title" id="title">
-						<label for="category">Catégorie</label>
-						<select name="category" id="category"></select>
-					<input class="add-photo-btn" type="submit" value="Valider">
-					</form>
+					<div class="pics-selection">
+						<div class="photo-upload-selection">
+							<div class="photo-upload-container">
+								<i class="fa-regular fa-image"></i>
+								<button class="photo-upload-btn"> + Ajout photo </button>
+								<p class="photo-note"> jpg, png : 4mo max</p>
+							</div>
+						</div>
+					
+						<form action="#" method="post">
+							<label for="title">Titre</label>
+							<input type="text" name="title" id="title">
+							<label for="category">Catégorie</label>
+							<select name="category" id="category"></select>
+							<input class="add-photo-btn" type="submit" value="Valider">
+						</form>
+					</div>
 				</div>
 			</div>
 			<div class="gallery"> </div>
