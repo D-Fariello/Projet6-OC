@@ -432,13 +432,20 @@ i.fa-regular.fa-trash-can {
     margin-top: -55px;
 }
 
+.photo-upload-container img{
+	position: relative;
+    background-color: #e8f1f6;
+    height: 200px;
+    margin-top: -55px;
+}
+
 i.fa-regular.fa-image {
     color:#b9c5cc;
 	font-size: 70px;
 }
 
-button.photo-upload-btn {
-    font-weight: 700;
+label.photo-upload-btn {
+    font-weight: 500;
     color: #356988;
     background-color: #cbd6dc;
     margin: 2em auto;
@@ -447,6 +454,7 @@ button.photo-upload-btn {
     border-radius: 60px;
     border: none;
     padding: 11px 20px 11px 20px;
+	cursor: pointer;
 }
 
 p.photo-note {
@@ -470,9 +478,10 @@ select#category {
 	margin-top: 5px;
 }
 
-input[type="submit"].add-photo-btn {
+input[type="submit"].validation-photo-btn {
     background-color: #a7a7a7;
 	width: 230px;
+	cursor: pointer;
 }
 
 .photo-selection {

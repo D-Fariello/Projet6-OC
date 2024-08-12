@@ -73,19 +73,24 @@
 					<h2> Ajout photo </h2>
 					<div class="pics-selection">
 						<div class="photo-upload-selection">
+
 							<div class="photo-upload-container">
 								<i class="fa-regular fa-image"></i>
-								<button class="photo-upload-btn"> + Ajout photo </button>
+								<img src="" alt="new-pictures" class="new-pictures" style="display: none;">
+								<input type="file" name="photo" id="photo" accept="image/*" style="display:none;">
+								<label for="photo" class="photo-upload-btn">+ Ajouter photo</label>
 								<p class="photo-note"> jpg, png : 4mo max</p>
 							</div>
 						</div>
 					
-						<form action="#" method="post">
+						<form action="#" method="post" id="form-add-pics">
 							<label for="title">Titre</label>
+
 							<input type="text" name="title" id="title">
 							<label for="category">Catégorie</label>
+
 							<select name="category" id="category"></select>
-							<input class="add-photo-btn" type="submit" value="Valider">
+							<input class="validation-photo-btn" type="submit" value="Valider">
 						</form>
 					</div>
 				</div>

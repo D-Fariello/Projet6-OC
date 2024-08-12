@@ -56,6 +56,17 @@ async function categoriesApiCall() {
 
     categories = await categoryRespose.json();
     console.log("Fetched Categories", categories);
+
+
+    // Populate the category dropdown
+    const categorySelect = document.getElementById("category");
+    categories.forEach(category => {
+        const option = document.createElement("option");
+        option.value = category.id;  // Store the category id as the option value
+        option.textContent = category.name;
+        categorySelect.appendChild(option);
+    });
+
     displayFilters();
 }
 
@@ -207,7 +218,7 @@ async function removeWork(e) {
     try {
         const response = await fetch(`http://localhost:5678/api/works/${id}`, {
             method: 'DELETE',
-            headers: {Authorization: `Bearer ${token}`},
+            headers: { Authorization: `Bearer ${token}` },
         });
 
         if (!response.ok) {
@@ -238,7 +249,7 @@ const picsSelection = document.querySelector(".pics-selection");
 const addPicsBtn = document.querySelector(".add-pictures-btn");
 const closingButton = document.querySelector(".close-button");
 const overlayAddPics = document.querySelector(".overlay");
-const addPhotoBtn = document.querySelector(".add-photo-btn");
+const addPhotoBtn = document.querySelector(".validation-photo-btn");
 const arrowLeft = document.querySelector(".arrow-left");
 
 ///////////////// Open  Add Photo Page //////////////
@@ -251,7 +262,7 @@ function openAddPhotoPage() {
 // Event listener for opening the Add Photo Page 
 addPicsBtn.addEventListener('click', openAddPhotoPage);
 
-arrowLeft.addEventListener('click', function() {
+arrowLeft.addEventListener('click', function () {
     closeAddPhotoPage();
     openModal();
 });
@@ -262,7 +273,7 @@ function closeAddPhotoPage() {
     addPhoto.style.display = "none";
 }
 
-closingButton.addEventListener('click', function() {
+closingButton.addEventListener('click', function () {
     closeAddPhotoPage();
     closeModal();
 });
@@ -273,9 +284,75 @@ overlayAddPics.addEventListener('click', closeAddPhotoPage);
 
 
 ////////////// Add Photo Button Click ////////////
-addPhotoBtn.addEventListener('click', function() {
+addPhotoBtn.addEventListener('click', function () {
     // Perform any additional actions for adding a photo here
 
     // Close the modal after adding the photo
     closeAddPhotoPage();
+});
+
+
+/////////////////////////////////////// Add Photo Functionalities //////////////////////////////////////////////
+
+
+///////////// Variables //////////////
+const photoInput = document.getElementById("photo");
+const newPicturesImg = document.querySelector(".new-pictures");
+const formAddPics = document.getElementById("form-add-pics");
+
+////////////// Event listener for image preview //////////////
+photoInput.addEventListener("change", function () {
+    const file = photoInput.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            newPicturesImg.src = e.target.result;
+            newPicturesImg.style.display = "block";
+        };
+        reader.readAsDataURL(file);
+    }
+});
+
+////////////// Event listener for adding a new photo //////////////
+formAddPics.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const formData = new FormData();
+    const title = document.getElementById("title").value;
+    const categoryId = document.getElementById("category").value;
+    const file = photoInput.files[0];
+
+    if (!title || !categoryId || !file) {
+        return;
+    }
+
+    formData.append("title", title);
+    formData.append("category", categoryId);
+    formData.append("image", file);
+
+    try {
+        const token = localStorage.getItem("token");
+        const response = await fetch("http://localhost:5678/api/works", {
+            method: "POST",
+            headers: { Authorization: `Bearer ${token}` },
+            body: formData,
+        });
+
+        if (!response.ok) {
+            throw new Error("Erreur lors de l'ajout de la photo");
+        }
+
+        const newWork = await response.json();
+        imageWorks.push(newWork);
+        displayWorks();
+        photoSelection();
+
+        // Reset form and close the modal
+        formAddPics.reset();
+        newPicturesImg.style.display = "none";
+        closeAddPhotoPage();
+
+    } catch (error) {
+        console.error("Erreur:", error);
+    }
 });
