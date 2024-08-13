@@ -101,6 +101,7 @@ function displayFilters() {
     removeFilters()
 }
 
+
 ///////// Remove Filters ////////////
 
 function removeFilters() {
@@ -126,7 +127,6 @@ function triageWorks(category) {
         displayWorks(filteredWorks);
     }
 }
-
 
 
 /////////////////////////////////////// Modal //////////////////////////////////////////////
@@ -222,7 +222,7 @@ async function removeWork(e) {
         });
 
         if (!response.ok) {
-            throw new Error('Network response was not ok');
+            throw new Error('Error');
         }
         // Remove the item from the local imageWorks array
         imageWorks = imageWorks.filter(item => item.id != id);
@@ -303,6 +303,19 @@ const formAddPics = document.getElementById("form-add-pics");
 ////////////// Event listener for image preview //////////////
 photoInput.addEventListener("change", function () {
     const file = photoInput.files[0];
+
+      // Validate file type (e.g., accept only images)
+      const validTypes = ["image/jpeg", "image/png", "image/jpg"];
+      if (!validTypes.includes(file.type)) {
+          return;
+      }
+  
+      // Validate file size (e.g., max 2MB)
+      const maxSizeInMB = 2;
+      if (file.size > maxSizeInMB * 1024 * 1024) {
+          return;
+      }  
+
     if (file) {
         const reader = new FileReader();
         reader.onload = function (e) {
@@ -311,21 +324,30 @@ photoInput.addEventListener("change", function () {
         };
         reader.readAsDataURL(file);
     }
-
-    // Validate file type (e.g., accept only images)
-    const validTypes = ["image/jpeg", "image/png", "image/jpg"];
-    if (!validTypes.includes(file.type)) {
-        return;
-    }
-
-    // Validate file size (e.g., max 2MB)
-    const maxSizeInMB = 2;
-    if (file.size > maxSizeInMB * 1024 * 1024) {
-        return;
-    }
-
-    showImage()
+    showImage();
+    validateForm();
 });
+
+
+////////////// Event listeners for title and categoryId //////////////
+document.getElementById("title").addEventListener("input", validateForm);
+document.getElementById("category").addEventListener("change", validateForm);
+
+////////////// Function to validate the form /////////////
+function validateForm() {
+    const title = document.getElementById("title").value;
+    const categoryId = document.getElementById("category").value;
+    const file = photoInput.files[0];
+
+    if (title && file && categoryId) {  
+        addPhotoBtn.style.backgroundColor = "#1D6154"; // Green color
+        addPhotoBtn.disabled = false; // Enable the button
+    } else {
+        addPhotoBtn.style.backgroundColor = "#a7a7a7"; // Light grey color
+        addPhotoBtn.disabled = true; // Disable the button
+    }
+}
+
 
 function showImage(){
     const iconImg = document.querySelector(".fa-regular.fa-image");
@@ -379,15 +401,17 @@ formAddPics.addEventListener("submit", async function (e) {
 
         const newWork = await response.json();
         imageWorks.push(newWork);
-        displayWorks();
-        photoSelection();
+        displayWorks(imageWorks);
+        photoSelection(imageWorks);
 
         // Reset form and close the modal
         formAddPics.reset();
         newPicturesImg.style.display = "none";
+        validateForm();
         closeAddPhotoPage();
 
     } catch (error) {
         console.error("Erreur:", error);
     }
+
 });
