@@ -311,7 +311,42 @@ photoInput.addEventListener("change", function () {
         };
         reader.readAsDataURL(file);
     }
+
+    // Validate file type (e.g., accept only images)
+    const validTypes = ["image/jpeg", "image/png", "image/jpg"];
+    if (!validTypes.includes(file.type)) {
+        return;
+    }
+
+    // Validate file size (e.g., max 2MB)
+    const maxSizeInMB = 2;
+    if (file.size > maxSizeInMB * 1024 * 1024) {
+        return;
+    }
+
+    showImage()
 });
+
+function showImage(){
+    const iconImg = document.querySelector(".fa-regular.fa-image");
+    const photoUploadBtn = document.querySelector(".photo-upload-btn");
+    const photoNote = document.querySelector(".photo-note");
+
+    if (iconImg && photoUploadBtn && photoNote) {
+        if (iconImg.style.display === "none") {
+            iconImg.style.display = "block";
+            photoUploadBtn.style.display = "block"; // Show the upload button
+            photoNote.style.display = "block"; // Show the note
+            newPicturesImg = true;
+        } else {
+            iconImg.style.display = "none";
+            photoUploadBtn.style.display = "none"; // Hide the upload button
+            photoNote.style.display = "none"; // Hide the note
+            newPicturesImg = false;
+        }
+    }
+
+}
 
 ////////////// Event listener for adding a new photo //////////////
 formAddPics.addEventListener("submit", async function (e) {
