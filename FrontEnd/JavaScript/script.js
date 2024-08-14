@@ -392,12 +392,10 @@ function showImage() {
             iconImg.style.display = "block";
             photoUploadBtn.style.display = "block"; // Show the upload button
             photoNote.style.display = "block"; // Show the note
-            newPicturesImg = true;
         } else {
             iconImg.style.display = "none";
             photoUploadBtn.style.display = "none"; // Hide the upload button
             photoNote.style.display = "none"; // Hide the note
-            newPicturesImg = false;
         }
     }
 
@@ -448,3 +446,26 @@ formAddPics.addEventListener("submit", async function (e) {
     }
 
 });
+
+
+function modifierButton() {
+    const loginLogout = document.querySelector(".login-logout");
+    const token = localStorage.getItem("token"); // retrieves the token from local storage
+    const modifyBtn = document.getElementById("modify-btn");
+    const modifyMode = document.querySelector(".modify-mode");
+    if (token) {
+        modifyBtn.style.display = "inline-flex";
+        modifyMode.style.display = "flex";
+        loginLogout.innerText = "logout";
+        loginLogout.addEventListener('click', handleLogout);
+    } else {
+        modifyBtn.style.display = "none";
+        modifyMode.style.display = "none";
+    }
+}
+modifierButton();
+
+function handleLogout() {
+    localStorage.removeItem("token");
+    window.location.reload(); // Reload the page to reflect changes
+}

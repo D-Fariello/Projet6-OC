@@ -7,14 +7,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
-		rel="stylesheet">
-	<meta name="description" content="Sophie Bluel, Architecte d'intérieur, spécialisée dans la conception d'espaces sur mesure.">
+	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
+	<meta name="description" content="">
+	<link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 	<link rel="stylesheet" href="./assets/styles/style.css">
 	<link rel="stylesheet" href="./assets/styles/login.css">
-	<script src="./JavaScript/script.js" type="module" defer></script>
-	<script src="./JavaScript/login.js" type="module" defer></script>
+	
 </head>
 
 <body>
@@ -25,13 +24,13 @@
 			<ul>
 				<li><a href="#portfolio">projets</a></li>
 				<li><a href="#contact">contact</a></li>
-				<li class="login-logout"><a href="login.html" target="_blank">login</a></li>
+				<li class="login-logout"><a href="./login.html" target="_blank">login</a></li>
 				<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 			</ul>
 		</nav>
 	</header>
 	<main>
-		<section id="introduction">
+		<div id="introduction">
 			<figure>
 				<img src="./assets/images/sophie-bluel.png" alt="Portrait de Sophie Bluel">
 			</figure>
@@ -45,7 +44,7 @@
 				<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG,
 					décorateur(trice)</p>
 			</article>
-		</section>
+		</div>
 		<section id="portfolio">
 			<h2 class="projectSection">Mes Projets <button id="modify-btn"><i class="fa-regular fa-pen-to-square"></i>
 					modifier </button></h2>
@@ -74,13 +73,13 @@
 
 							<div class="photo-upload-container">
 								<i class="fa-regular fa-image"></i>
-								<img alt="new-pictures" class="new-pictures" style="display: none;">
-								<input type="file" name="photo" id="photo" accept="image/*" style="display:none;">
+								<img src="#" alt="new-pictures" class="new-pictures">
+								<input type="file" name="photo" id="photo" accept="image/*">
 								<label for="photo" class="photo-upload-btn">+ Ajouter photo</label>
 								<p class="photo-note"> jpg, png : 4mo max</p>
 							</div>
 						</div>
-					
+
 						<form action="#" method="post" id="form-add-pics">
 							<label for="title">Titre</label>
 							<input type="text" name="title" id="title">
@@ -117,6 +116,6 @@
 			</ul>
 		</nav>
 	</footer>
+	<script src="./JavaScript/script.js"></script>
 </body>
-
 </html>
