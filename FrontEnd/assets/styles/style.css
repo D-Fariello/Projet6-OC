@@ -157,6 +157,15 @@ li:hover{
 	width: 100%;
 
 }
+
+img.img-project {
+    min-width: 370px;
+    max-width: 370px;
+    min-height: 490px;
+    max-height: 490px;
+    object-fit: cover;
+}
+
 #contact {
 	width: 50%;
 margin: auto;
@@ -274,6 +283,7 @@ footer nav ul {
 	transform: translate(-50%, -50%);
 	width: 600px;
 	height: 600px;
+	/* height: 60%; */
 	background-color: #fffef8;
 	border-radius: 2%;
 	padding: 30px 30px 50px 30px;
@@ -318,7 +328,8 @@ input[type="submit"].add-pictures-btn {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 10px;
-    padding-right: 10%;
+    /* padding-right: 10%;
+	padding-left: 10%; */
 	padding-bottom: 35px;
 	border-bottom: 1px grey solid;
 }
@@ -334,9 +345,13 @@ input[type="submit"].add-pictures-btn {
 .img-selection {
     position: relative;
     display: block;
-    height: 100px;
+	min-height: 100px;
+    min-width: 85px;
+    max-height: 100px;
+    max-width: 70px;
     cursor: pointer;
     margin-bottom: 20px;
+	object-fit: cover;
 }
 
 .figure-img {

@@ -39,6 +39,7 @@ function displayWorks(items = imageWorks) { // adding these parameters so when d
         const img = document.createElement("img");
         img.src = item.imageUrl;
         img.alt = item.title;
+        img.classList.add("img-project");
         figure.appendChild(img);
 
         const figcaption = document.createElement("figcaption");
@@ -317,16 +318,39 @@ photoInput.addEventListener("change", function () {
       }  
 
     if (file) {
-        const reader = new FileReader();
+        const reader = new FileReader(); //  read the contents of the file
         reader.onload = function (e) {
             newPicturesImg.src = e.target.result;
             newPicturesImg.style.display = "block";
         };
-        reader.readAsDataURL(file);
+        reader.readAsDataURL(file); //reads the file as a data URL 
     }
     showImage();
     validateForm();
 });
+
+
+////////////// Function to populate category options dynamically /////////////
+
+function populateCategoryOptions(categories) {
+    const categorySelect = document.getElementById("category");
+
+    // Add the placeholder option
+    const placeholderOption = document.createElement("option");
+    placeholderOption.value = ""; // Empty value to enforce selection
+    placeholderOption.textContent = "";
+    categorySelect.appendChild(placeholderOption);
+
+    // Dynamically add the actual category options
+    categories.forEach(category => {
+        const option = document.createElement("option");
+        option.value = category.id; 
+        option.textContent = category.name; 
+        categorySelect.appendChild(option);
+    });
+}
+
+populateCategoryOptions();
 
 
 ////////////// Event listeners for title and categoryId //////////////
