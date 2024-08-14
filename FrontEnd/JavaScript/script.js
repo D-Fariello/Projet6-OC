@@ -61,6 +61,13 @@ async function categoriesApiCall() {
 
     // Populate the category dropdown
     const categorySelect = document.getElementById("category");
+
+    // Add an empty selection option with value 0
+    const emptyOption = document.createElement("option");
+    emptyOption.value = "";  // Set the value to an empty string for the empty option
+    emptyOption.textContent = "";  // Display text for the empty option
+    categorySelect.appendChild(emptyOption);
+
     categories.forEach(category => {
         const option = document.createElement("option");
         option.value = category.id;  // Store the category id as the option value
@@ -99,9 +106,34 @@ function displayFilters() {
     projectSection.appendChild(filterDiv);
 
     // Calling RemoveFilters after filterDiv is added to the DOM
-    removeFilters()
+    removeFilters();
+
+    hoveredButton();
 }
 
+//// Hovered Filter
+
+function hoveredButton() {
+    const categoryButton = document.querySelectorAll(".filterButton");
+
+    categoryButton.forEach(button => {
+         // Change color on click
+         button.addEventListener('click', () => {
+            // Reset all buttons to default background and text color
+            categoryButton.forEach(btn => {
+                btn.style.backgroundColor = ""; // Reset background color
+                btn.style.color = "#1D6154"; // Reset text color
+            });
+            
+            // Highlight the clicked button
+            button.style.backgroundColor = "#1D6154"; 
+            button.style.color = "white"; 
+        });
+    });
+}
+
+
+hoveredButton();
 
 ///////// Remove Filters ////////////
 
@@ -128,7 +160,6 @@ function triageWorks(category) {
         displayWorks(filteredWorks);
     }
 }
-
 
 /////////////////////////////////////// Modal //////////////////////////////////////////////
 
@@ -305,17 +336,17 @@ const formAddPics = document.getElementById("form-add-pics");
 photoInput.addEventListener("change", function () {
     const file = photoInput.files[0];
 
-      // Validate file type (e.g., accept only images)
-      const validTypes = ["image/jpeg", "image/png", "image/jpg"];
-      if (!validTypes.includes(file.type)) {
-          return;
-      }
-  
-      // Validate file size (e.g., max 2MB)
-      const maxSizeInMB = 2;
-      if (file.size > maxSizeInMB * 1024 * 1024) {
-          return;
-      }  
+    // Validate file type (e.g., accept only images)
+    const validTypes = ["image/jpeg", "image/png", "image/jpg"];
+    if (!validTypes.includes(file.type)) {
+        return;
+    }
+
+    // Validate file size (e.g., max 2MB)
+    const maxSizeInMB = 2;
+    if (file.size > maxSizeInMB * 1024 * 1024) {
+        return;
+    }
 
     if (file) {
         const reader = new FileReader(); //  read the contents of the file
@@ -330,29 +361,6 @@ photoInput.addEventListener("change", function () {
 });
 
 
-////////////// Function to populate category options dynamically /////////////
-
-function populateCategoryOptions(categories) {
-    const categorySelect = document.getElementById("category");
-
-    // Add the placeholder option
-    const placeholderOption = document.createElement("option");
-    placeholderOption.value = ""; // Empty value to enforce selection
-    placeholderOption.textContent = "";
-    categorySelect.appendChild(placeholderOption);
-
-    // Dynamically add the actual category options
-    categories.forEach(category => {
-        const option = document.createElement("option");
-        option.value = category.id; 
-        option.textContent = category.name; 
-        categorySelect.appendChild(option);
-    });
-}
-
-populateCategoryOptions();
-
-
 ////////////// Event listeners for title and categoryId //////////////
 document.getElementById("title").addEventListener("input", validateForm);
 document.getElementById("category").addEventListener("change", validateForm);
@@ -363,7 +371,8 @@ function validateForm() {
     const categoryId = document.getElementById("category").value;
     const file = photoInput.files[0];
 
-    if (title && file && categoryId) {  
+
+    if (title && file && categoryId !== "") {
         addPhotoBtn.style.backgroundColor = "#1D6154"; // Green color
         addPhotoBtn.disabled = false; // Enable the button
     } else {
@@ -373,7 +382,7 @@ function validateForm() {
 }
 
 
-function showImage(){
+function showImage() {
     const iconImg = document.querySelector(".fa-regular.fa-image");
     const photoUploadBtn = document.querySelector(".photo-upload-btn");
     const photoNote = document.querySelector(".photo-note");

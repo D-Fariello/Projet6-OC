@@ -458,6 +458,11 @@ i.fa-regular.fa-image {
 	font-size: 70px;
 }
 
+.line-bottom {
+    border: 0.5px solid #cbd6dc;
+    margin-top: 42px;
+}
+
 label.photo-upload-btn {
     font-weight: 500;
     color: #356988;
