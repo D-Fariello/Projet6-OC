@@ -319,8 +319,8 @@ overlayAddPics.addEventListener('click', closeAddPhotoPage);
 addPhotoBtn.addEventListener('click', function () {
     // Perform any additional actions for adding a photo here
 
-    // Close the modal after adding the photo
-    closeAddPhotoPage();
+    // // Close the modal after adding the photo
+    // closeAddPhotoPage();
 });
 
 
@@ -366,11 +366,10 @@ document.getElementById("title").addEventListener("input", validateForm);
 document.getElementById("category").addEventListener("change", validateForm);
 
 ////////////// Function to validate the form /////////////
-function validateForm() {
+function validateForm(e) {
     const title = document.getElementById("title").value;
     const categoryId = document.getElementById("category").value;
     const file = photoInput.files[0];
-
 
     if (title && file && categoryId !== "") {
         addPhotoBtn.style.backgroundColor = "#1D6154"; // Green color
@@ -438,8 +437,9 @@ formAddPics.addEventListener("submit", async function (e) {
         // Reset form and close the modal
         formAddPics.reset();
         newPicturesImg.style.display = "none";
+        newPicturesImg.src= "";
         validateForm();
-        closeAddPhotoPage();
+        showImage();
 
     } catch (error) {
         console.error("Erreur:", error);

@@ -24,6 +24,7 @@ async function eventListenerLogin() {
 
         } catch (error) {
             loginError.innerText = "Une erreur est survenue lors de la connexion.";
+            loginError.style.color = "#c40606";
             console.error("Login error", error);
         }
     }

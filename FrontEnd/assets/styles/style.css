@@ -249,7 +249,7 @@ footer nav ul {
 
 .filterButton:hover {
  background-color: #1D6154;
- color: white;
+ color: white !important;
 }
 
 /* Modifier Button style */
@@ -283,7 +283,6 @@ footer nav ul {
 	transform: translate(-50%, -50%);
 	width: 600px;
 	height: 600px;
-	/* height: 60%; */
 	background-color: #fffef8;
 	border-radius: 2%;
 	padding: 30px 30px 50px 30px;
@@ -328,8 +327,6 @@ input[type="submit"].add-pictures-btn {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 10px;
-    /* padding-right: 10%;
-	padding-left: 10%; */
 	padding-bottom: 35px;
 	border-bottom: 1px grey solid;
 }
@@ -451,6 +448,14 @@ i.fa-regular.fa-trash-can {
 	position: relative;
     background-color: #e8f1f6;
     height: 200px;
+}
+
+.new-pictures {
+    display: none;
+}
+
+#photo {
+	display: none;
 }
 
 i.fa-regular.fa-image {
