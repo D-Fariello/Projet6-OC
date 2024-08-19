@@ -15,7 +15,6 @@ const gallery = document.querySelector(".gallery");
 async function worksApiCall() {
     const response = await fetch("http://localhost:5678/api/works");
     const works = await response.json();
-    console.log("Fecthed Works", works);
     imageWorks = works;
     displayWorks();
     photoSelection(); /*Calling these functions here 
@@ -56,7 +55,6 @@ async function categoriesApiCall() {
     const categoryRespose = await fetch("http://localhost:5678/api/categories");
 
     categories = await categoryRespose.json();
-    console.log("Fetched Categories", categories);
 
 
     // Populate the category dropdown
@@ -207,7 +205,7 @@ overlay.addEventListener('click', closeModal);
 
 ////////////// Photo Selection (Gallery) ///////////////
 
-function photoSelection(items = imageWorks) { // adding these parameters so when displayWorks() is called it will automatically use imageWorks
+function photoSelection(items = imageWorks) { // adding these parameters so when photoSelection() is called it will automatically use imageWorks
     if (!items) // If Items do not have anything, ensure there is data to display
         return;
 
@@ -366,7 +364,7 @@ document.getElementById("title").addEventListener("input", validateForm);
 document.getElementById("category").addEventListener("change", validateForm);
 
 ////////////// Function to validate the form /////////////
-function validateForm(e) {
+function validateForm() {
     const title = document.getElementById("title").value;
     const categoryId = document.getElementById("category").value;
     const file = photoInput.files[0];
